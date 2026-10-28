@@ -1,6 +1,7 @@
 package interpreter.controller;
 
 import interpreter.exceptions.MyException;
+import interpreter.exceptions.StatementException;
 import interpreter.model.PrgState;
 import interpreter.model.stmt.IStmt;
 import interpreter.repository.IRepository;
@@ -14,31 +15,26 @@ public class Controller {
         this.displayFlag = displayFlag;
     }
 
-    public PrgState oneStep() throws MyException {
-        PrgState state = repository.getPrgState();
-
+    public PrgState oneStep(PrgState state) throws MyException {
         if (state.getExeStack().isEmpty()) {
-            throw new MyException("Execution stack is empty");
+            throw new StatementException("program state stack is empty");
         }
 
         IStmt statement = state.getExeStack().pop();
-        PrgState updatedState = statement.execute(state);
-        repository.setPrgState(updatedState);
-
-        return updatedState;
+        return statement.execute(state);
     }
 
     public void allStep() throws MyException {
-        PrgState state = repository.getPrgState();
+        PrgState state = repository.getCrtPrg();
+        display(state);
 
         while (!state.getExeStack().isEmpty()) {
-            if (displayFlag) {
-                System.out.println(state);
-            }
-
-            state = oneStep();
+            oneStep(state);
+            display(state);
         }
+    }
 
+    private void display(PrgState state) {
         if (displayFlag) {
             System.out.println(state);
         }

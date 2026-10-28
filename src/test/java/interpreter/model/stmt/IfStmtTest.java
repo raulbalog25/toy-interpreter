@@ -40,6 +40,22 @@ class IfStmtTest {
     }
 
     @Test
+    void pushesElseBranchWhenConditionIsFalse() throws Exception {
+        IStmt thenStatement = new NopStmt();
+        IStmt elseStatement = new NopStmt();
+        IfStmt statement = new IfStmt(
+                new ValueExp(new BoolValue(false)),
+                thenStatement,
+                elseStatement
+        );
+        PrgState state = createState(statement);
+
+        statement.execute(state);
+
+        assertSame(elseStatement, state.getExeStack().pop());
+    }
+
+    @Test
     void rejectsNonBooleanCondition() {
         IfStmt statement = new IfStmt(
                 new ValueExp(new IntValue(1)),

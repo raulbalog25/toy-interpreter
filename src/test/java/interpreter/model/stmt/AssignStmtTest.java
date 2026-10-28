@@ -7,6 +7,7 @@ import interpreter.model.adt.MyList;
 import interpreter.model.adt.MyStack;
 import interpreter.model.exp.ValueExp;
 import interpreter.model.type.IntType;
+import interpreter.model.value.BoolValue;
 import interpreter.model.value.IntValue;
 import org.junit.jupiter.api.Test;
 
@@ -44,6 +45,19 @@ class AssignStmtTest {
         AssignStmt assignment = new AssignStmt(
                 "x",
                 new ValueExp(new IntValue(7))
+        );
+
+        assertThrows(StatementException.class, () -> assignment.execute(state));
+    }
+
+    @Test
+    void rejectsAssignmentWithDifferentType() throws Exception {
+        PrgState state = createState();
+        new VarDeclStmt("x", new IntType()).execute(state);
+
+        AssignStmt assignment = new AssignStmt(
+                "x",
+                new ValueExp(new BoolValue(true))
         );
 
         assertThrows(StatementException.class, () -> assignment.execute(state));

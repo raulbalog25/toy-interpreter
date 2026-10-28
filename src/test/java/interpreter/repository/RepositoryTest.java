@@ -11,26 +11,16 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 
 class RepositoryTest {
     @Test
-    void storesAndReturnsProgramState() {
-        PrgState firstState = new PrgState(
-                new MyStack<>(),
-                new MyDictionary<>(),
-                new MyList<>(),
-                new NopStmt()
-        );
-        PrgState secondState = new PrgState(
+    void returnsCurrentProgramState() {
+        PrgState state = new PrgState(
                 new MyStack<>(),
                 new MyDictionary<>(),
                 new MyList<>(),
                 new NopStmt()
         );
 
-        Repository repository = new Repository(firstState);
+        Repository repository = new Repository(state);
 
-        assertSame(firstState, repository.getPrgState());
-
-        repository.setPrgState(secondState);
-
-        assertSame(secondState, repository.getPrgState());
+        assertSame(state, repository.getCrtPrg());
     }
 }
