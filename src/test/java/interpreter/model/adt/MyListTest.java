@@ -1,6 +1,6 @@
 package interpreter.model.adt;
-
 import interpreter.exceptions.ADTException;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -8,19 +8,19 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class MyListTest {
     @Test
-    void addGetAndSizeWork() throws ADTException {
-        MyList<String> list = new MyList<>();
-        list.add("first");
-        list.add("second");
+    void addsGetsAndCountsElements() throws Exception {
+        MyList<Integer> list = new MyList<>();
+        list.add(10);
+        list.add(20);
 
         assertEquals(2, list.size());
-        assertEquals("first", list.get(0));
-        assertEquals("second", list.get(1));
+        assertEquals(10, list.get(0));
+        assertEquals(20, list.get(1));
     }
 
     @Test
-    void getOutsideListThrows() {
-        MyList<String> list = new MyList<>();
+    void gettingInvalidIndexThrows() {
+        MyList<Integer> list = new MyList<>();
 
         assertThrows(ADTException.class, () -> list.get(0));
     }

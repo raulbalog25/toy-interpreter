@@ -1,9 +1,9 @@
 package interpreter.model.exp;
 
 import interpreter.exceptions.ExpressionException;
+import interpreter.model.adt.IDictionary;
 import interpreter.model.adt.MyDictionary;
 import interpreter.model.value.BoolValue;
-import interpreter.model.value.IValue;
 import interpreter.model.value.IntValue;
 import org.junit.jupiter.api.Test;
 
@@ -11,48 +11,77 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ArithExpTest {
-    private final MyDictionary<String, IValue> symTable = new MyDictionary<>();
-
-    private IExp num(int value) {
+    private IExp number(int value) {
         return new ValueExp(new IntValue(value));
     }
 
-    @Test
-    void additionWorks() throws Exception {
-        assertEquals(new IntValue(5),
-                new ArithExp(ArithOp.ADD, num(2), num(3)).eval(symTable));
+    private IDictionary<String, interpreter.model.value.IValue> emptySymTable() {
+        return new MyDictionary<>();
     }
 
     @Test
-    void subtractionWorks() throws Exception {
-        assertEquals(new IntValue(2),
-                new ArithExp(ArithOp.SUB, num(5), num(3)).eval(symTable));
+    void addsIntegers() throws Exception {
+        IExp expression = new ArithExp(ArithOp.ADD, number(8), number(3));
+
+        assertEquals(11, ((IntValue) expression.eval(emptySymTable())).getVal());
     }
 
     @Test
-    void multiplicationWorks() throws Exception {
-        assertEquals(new IntValue(6),
-                new ArithExp(ArithOp.MUL, num(2), num(3)).eval(symTable));
+    void subtractsIntegers() throws Exception {
+        IExp expression = new ArithExp(ArithOp.SUB, number(8), number(3));
+
+        assertEquals(5, ((IntValue) expression.eval(emptySymTable())).getVal());
     }
 
     @Test
-    void divisionWorks() throws Exception {
-        assertEquals(new IntValue(4),
-                new ArithExp(ArithOp.DIV, num(8), num(2)).eval(symTable));
+    void multipliesIntegers() throws Exception {
+        IExp expression = new ArithExp(ArithOp.MUL, number(8), number(3));
+
+        assertEquals(24, ((IntValue) expression.eval(emptySymTable())).getVal());
+    }
+
+    @Test
+    void dividesIntegers() throws Exception {
+        IExp expression = new ArithExp(ArithOp.DIV, number(8), number(2));
+
+        assertEquals(4, ((IntValue) expression.eval(emptySymTable())).getVal());
     }
 
     @Test
     void divisionByZeroThrows() {
-        ArithExp expression = new ArithExp(ArithOp.DIV, num(1), num(0));
+        IExp expression = new ArithExp(ArithOp.DIV, number(8), number(0));
 
-        assertThrows(ExpressionException.class, () -> expression.eval(symTable));
+        assertThrows(
+                ExpressionException.class,
+                () -> expression.eval(emptySymTable())
+        );
     }
 
     @Test
-    void nonIntegerOperandThrows() {
-        IExp bool = new ValueExp(new BoolValue(true));
-        ArithExp expression = new ArithExp(ArithOp.ADD, bool, num(1));
+    void nonIntegerFirstOperandThrows() {
+        IExp expression = new ArithExp(
+                ArithOp.ADD,
+                new ValueExp(new BoolValue(true)),
+                number(1)
+        );
 
-        assertThrows(ExpressionException.class, () -> expression.eval(symTable));
+        assertThrows(
+                ExpressionException.class,
+                () -> expression.eval(emptySymTable())
+        );
+    }
+
+    @Test
+    void nonIntegerSecondOperandThrows() {
+        IExp expression = new ArithExp(
+                ArithOp.ADD,
+                number(1),
+                new ValueExp(new BoolValue(true))
+        );
+
+        assertThrows(
+                ExpressionException.class,
+                () -> expression.eval(emptySymTable())
+        );
     }
 }

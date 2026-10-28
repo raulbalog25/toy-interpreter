@@ -8,12 +8,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ValueExpTest {
     @Test
-    void evaluatesToItsStoredValue() throws Exception {
-        ValueExp expression = new ValueExp(new IntValue(7));
+    void evaluatesConstantValue() throws Exception {
+        ValueExp expression = new ValueExp(new IntValue(12));
 
-        assertEquals(
-                new IntValue(7),
-                expression.eval(new MyDictionary<>())
-        );
+        IntValue result = (IntValue) expression.eval(new MyDictionary<>());
+
+        assertEquals(12, result.getVal());
     }
 }
