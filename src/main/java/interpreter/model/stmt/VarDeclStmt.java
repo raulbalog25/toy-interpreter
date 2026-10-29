@@ -5,6 +5,7 @@ import interpreter.exceptions.StatementException;
 import interpreter.model.PrgState;
 import interpreter.model.type.IType;
 
+//declara o variabila
 public class VarDeclStmt implements IStmt {
     private final String name;
     private final IType type;

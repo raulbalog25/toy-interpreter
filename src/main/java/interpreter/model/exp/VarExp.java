@@ -5,6 +5,7 @@ import interpreter.exceptions.MyException;
 import interpreter.model.adt.IDictionary;
 import interpreter.model.value.IValue;
 
+//citeste o variabila
 public class VarExp implements IExp {
     private final String id;
 

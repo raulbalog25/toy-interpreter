@@ -5,6 +5,7 @@ import interpreter.exceptions.ADTException;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
+//pastraza instructiunile care mai trebuie executate
 public class MyStack<T> implements IStack<T> {
     private final Deque<T> stack = new ArrayDeque<>();
 

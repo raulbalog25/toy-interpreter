@@ -12,6 +12,7 @@ import interpreter.repository.Repository;
 import java.util.List;
 import java.util.Scanner;
 
+//afiseaza meniul
 public class TextMenu {
     private final Scanner scanner = new Scanner(System.in);
     private IStmt selectedProgram;

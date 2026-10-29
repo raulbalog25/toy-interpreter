@@ -5,6 +5,7 @@ import interpreter.exceptions.ADTException;
 import java.util.ArrayList;
 import java.util.List;
 
+//pastraza valorile afisate de program
 public class MyList<T> implements IList<T> {
     private final List<T> list = new ArrayList<>();
 

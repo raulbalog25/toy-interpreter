@@ -5,6 +5,7 @@ import interpreter.model.PrgState;
 import java.util.ArrayList;
 import java.util.List;
 
+//pastreaza starea programului
 public class Repository implements IRepository {
     private final List<PrgState> programStates = new ArrayList<>();
 

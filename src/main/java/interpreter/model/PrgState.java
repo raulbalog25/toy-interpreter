@@ -6,6 +6,8 @@ import interpreter.model.adt.IStack;
 import interpreter.model.stmt.IStmt;
 import interpreter.model.value.IValue;
 
+//reprezinta staarea curenta a programului
+//tine stiva cu instructiunile care mai trebuie executate, variabilele si lista de iesire
 public class PrgState {
     private IStack<IStmt> exeStack;
     private IDictionary<String, IValue> symTable;

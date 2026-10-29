@@ -17,6 +17,7 @@ import interpreter.model.value.IntValue;
 
 import java.util.List;
 
+//contine cele 3 programe:Ex1, Ex2, Ex3
 public class Examples {
     public static List<IStmt> getExamples() {
         IStmt ex1 = new CompStmt(

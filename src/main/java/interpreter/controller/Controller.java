@@ -6,6 +6,7 @@ import interpreter.model.PrgState;
 import interpreter.model.stmt.IStmt;
 import interpreter.repository.IRepository;
 
+//executa programul
 public class Controller {
     private final IRepository repository;
     private final boolean displayFlag;

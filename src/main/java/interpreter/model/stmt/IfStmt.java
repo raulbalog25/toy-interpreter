@@ -7,6 +7,7 @@ import interpreter.model.exp.IExp;
 import interpreter.model.value.BoolValue;
 import interpreter.model.value.IValue;
 
+//alege o ramura
 public class IfStmt implements IStmt {
     private final IExp condition;
     private final IStmt thenStatement;

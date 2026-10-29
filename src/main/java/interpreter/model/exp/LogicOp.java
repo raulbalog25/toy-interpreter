@@ -1,5 +1,6 @@
 package interpreter.model.exp;
 
+//enumera operatii logice acceptate
 public enum LogicOp {
     AND("and"),
     OR("or");

@@ -6,6 +6,7 @@ import interpreter.model.adt.IDictionary;
 import interpreter.model.value.BoolValue;
 import interpreter.model.value.IValue;
 
+//executa operatii logice acceptate
 public class LogicExp implements IExp {
     private final LogicOp op;
     private final IExp left;

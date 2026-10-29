@@ -6,6 +6,7 @@ import interpreter.model.adt.IDictionary;
 import interpreter.model.value.IValue;
 import interpreter.model.value.IntValue;
 
+//executa operatii logice acceptate
 public class ArithExp implements IExp {
     private final ArithOp op;
     private final IExp left;

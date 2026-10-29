@@ -4,6 +4,7 @@ import interpreter.exceptions.MyException;
 import interpreter.model.adt.IDictionary;
 import interpreter.model.value.IValue;
 
+//reprezinta o constanta
 public class ValueExp implements IExp {
     private final IValue value;
 

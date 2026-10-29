@@ -3,6 +3,7 @@ package interpreter.model.stmt;
 import interpreter.exceptions.MyException;
 import interpreter.model.PrgState;
 
+//uneste doua instructiuni
 public class CompStmt implements IStmt {
     private final IStmt first;
     private final IStmt second;

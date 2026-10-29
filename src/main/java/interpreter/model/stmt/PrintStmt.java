@@ -4,6 +4,7 @@ import interpreter.exceptions.MyException;
 import interpreter.model.PrgState;
 import interpreter.model.exp.IExp;
 
+//afiseaza o valoare
 public class PrintStmt implements IStmt {
     private final IExp expression;
 

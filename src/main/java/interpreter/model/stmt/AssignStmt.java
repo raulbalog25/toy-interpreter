@@ -6,6 +6,7 @@ import interpreter.model.PrgState;
 import interpreter.model.exp.IExp;
 import interpreter.model.value.IValue;
 
+//atribuie o valoare variabilei declarate
 public class AssignStmt implements IStmt {
     private final String name;
     private final IExp expression;

@@ -5,6 +5,7 @@ import interpreter.exceptions.ADTException;
 import java.util.HashMap;
 import java.util.Map;
 
+//pastreaza variabilele si valorile lor
 public class MyDictionary<K, V> implements IDictionary<K, V> {
     private final Map<K, V> dictionary = new HashMap<>();
 
