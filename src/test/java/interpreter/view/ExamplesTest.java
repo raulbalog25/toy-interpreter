@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ExamplesTest {
     @Test
-    void providesThreeExamplePrograms() {
-        assertEquals(3, Examples.getExamples().size());
-        assertEquals(3, Examples.getDescriptions().size());
+    void providesFiveExamplePrograms() {
+        assertEquals(5, Examples.getExamples().size());
+        assertEquals(5, Examples.getDescriptions().size());
     }
 }
