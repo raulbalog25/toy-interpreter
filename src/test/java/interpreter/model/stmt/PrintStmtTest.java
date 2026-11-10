@@ -15,12 +15,7 @@ class PrintStmtTest {
     void addsEvaluatedValueToOutput() throws Exception {
         PrintStmt statement = new PrintStmt(new ValueExp(new IntValue(5)));
 
-        PrgState state = new PrgState(
-                new MyStack<>(),
-                new MyDictionary<>(),
-                new MyList<>(),
-                statement
-        );
+        PrgState state = PrgState.of(statement);
 
         statement.execute(state);
 

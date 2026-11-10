@@ -2,9 +2,6 @@ package interpreter.model.stmt;
 
 import interpreter.exceptions.StatementException;
 import interpreter.model.PrgState;
-import interpreter.model.adt.MyDictionary;
-import interpreter.model.adt.MyList;
-import interpreter.model.adt.MyStack;
 import interpreter.model.exp.ValueExp;
 import interpreter.model.value.BoolValue;
 import interpreter.model.value.IntValue;
@@ -15,12 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class IfStmtTest {
     private PrgState createState(IStmt program) {
-        return new PrgState(
-                new MyStack<>(),
-                new MyDictionary<>(),
-                new MyList<>(),
-                program
-        );
+        return PrgState.of(program);
     }
 
     @Test
@@ -64,6 +56,9 @@ class IfStmtTest {
         );
         PrgState state = createState(statement);
 
-        assertThrows(StatementException.class, () -> statement.execute(state));
+        assertThrows(
+                StatementException.class,
+                () -> statement.execute(state)
+        );
     }
 }

@@ -1,14 +1,16 @@
 package interpreter.model.adt;
-import interpreter.exceptions.ADTException;
 
+import interpreter.exceptions.ADTException;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class MyStackTest {
     @Test
-    void followsLifoOrder() throws Exception {
+    void stackIsLifo() throws ADTException {
         MyStack<Integer> stack = new MyStack<>();
         stack.push(1);
         stack.push(2);
@@ -22,5 +24,14 @@ class MyStackTest {
         MyStack<Integer> stack = new MyStack<>();
 
         assertThrows(ADTException.class, stack::pop);
+    }
+
+    @Test
+    void toListReturnsTopElementFirst() {
+        MyStack<Integer> stack = new MyStack<>();
+        stack.push(1);
+        stack.push(2);
+
+        assertEquals(List.of(2, 1), stack.toList());
     }
 }

@@ -12,12 +12,7 @@ class NopStmtTest {
     @Test
     void executesWithoutChangingTheExecutionStack() throws Exception {
         NopStmt statement = new NopStmt();
-        PrgState state = new PrgState(
-                new MyStack<>(),
-                new MyDictionary<>(),
-                new MyList<>(),
-                statement
-        );
+        PrgState state = PrgState.of(statement);
 
         statement.execute(state);
 

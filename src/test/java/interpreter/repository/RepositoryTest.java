@@ -12,12 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 class RepositoryTest {
     @Test
     void returnsCurrentProgramState() {
-        PrgState state = new PrgState(
-                new MyStack<>(),
-                new MyDictionary<>(),
-                new MyList<>(),
-                new NopStmt()
-        );
+        PrgState state = PrgState.of(new NopStmt());
 
         Repository repository = new Repository(state);
 

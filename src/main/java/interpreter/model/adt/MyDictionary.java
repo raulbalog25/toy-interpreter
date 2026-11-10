@@ -5,7 +5,7 @@ import interpreter.exceptions.ADTException;
 import java.util.HashMap;
 import java.util.Map;
 
-//pastreaza variabilele si valorile lor
+// Pastreaza variabilele si valorile lor
 public class MyDictionary<K, V> implements IDictionary<K, V> {
     private final Map<K, V> dictionary = new HashMap<>();
 
@@ -33,6 +33,19 @@ public class MyDictionary<K, V> implements IDictionary<K, V> {
             throw new ADTException("key is not defined: " + key);
         }
         dictionary.put(key, value);
+    }
+
+    @Override
+    public void remove(K key) throws ADTException {
+        if (!dictionary.containsKey(key)) {
+            throw new ADTException("key is not defined: " + key);
+        }
+        dictionary.remove(key);
+    }
+
+    @Override
+    public Map<K, V> toMap() {
+        return Map.copyOf(dictionary);
     }
 
     @Override

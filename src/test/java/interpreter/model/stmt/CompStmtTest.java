@@ -15,12 +15,8 @@ class CompStmtTest {
         IStmt second = new NopStmt();
         CompStmt compound = new CompStmt(first, second);
 
-        PrgState state = new PrgState(
-                new MyStack<>(),
-                new MyDictionary<>(),
-                new MyList<>(),
-                compound
-        );
+        PrgState state = PrgState.of(compound);
+
 
         compound.execute(state);
 

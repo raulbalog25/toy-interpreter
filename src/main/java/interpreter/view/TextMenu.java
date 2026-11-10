@@ -80,12 +80,7 @@ public class TextMenu {
         System.out.println("Running: " + selectedDescription);
 
         // Se creează o stare nouă la fiecare rulare.
-        PrgState state = new PrgState(
-                new MyStack<>(),
-                new MyDictionary<>(),
-                new MyList<>(),
-                selectedProgram
-        );
+        PrgState state = PrgState.of(selectedProgram);
 
         Controller controller = new Controller(new Repository(state), true);
 
