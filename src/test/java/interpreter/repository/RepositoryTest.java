@@ -14,7 +14,7 @@ class RepositoryTest {
     void returnsCurrentProgramState() {
         PrgState state = PrgState.of(new NopStmt());
 
-        Repository repository = new Repository(state);
+        Repository repository = new Repository(state, "repository-test.log");
 
         assertSame(state, repository.getCrtPrg());
     }

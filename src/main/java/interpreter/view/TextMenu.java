@@ -82,7 +82,7 @@ public class TextMenu {
         // Se creează o stare nouă la fiecare rulare.
         PrgState state = PrgState.of(selectedProgram);
 
-        Controller controller = new Controller(new Repository(state), true);
+        Controller controller = new Controller(new Repository(state, "log.txt"), true);
 
         try {
             controller.allStep();
